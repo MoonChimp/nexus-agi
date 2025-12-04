@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeXus AGI | AI-Powered Creative & Business Agency</title>
+    <meta name="description" content="NeXus AGI - Your complete AI agency suite. Websites, smart contracts, images, videos, financial analysis, and more. Built by AI, delivered by professionals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #06B6D4;
+            --accent: #F59E0B;
+            --dark: #0F0F23;
+            --darker: #09090F;
+            --card: #1A1A2E;
+            --card-hover: #252542;
+            --text: #E2E8F0;
+            --text-muted: #94A3B8;
+            --border: #2D2D4A;
+            --success: #10B981;
+            --gradient-1: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+            --gradient-2: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+            --gradient-3: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Animated Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow-1 {
+            top: -200px;
+            right: -200px;
+            background: var(--primary);
+        }
+
+        .bg-glow-2 {
+            bottom: -200px;
+            left: -200px;
+            background: var(--secondary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(9, 9, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo span {
+            color: var(--text-muted);
+            -webkit-text-fill-color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .gradient {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Agencies Grid */
+        .agencies-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .agency-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agency-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .agency-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .agency-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .agency-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .agency-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .agency-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .agency-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .agency-feature {
+            padding: 0.35rem 0.75rem;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-1);
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--primary);
+        }
+
+        .pricing-tier {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pricing-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .portfolio-preview {
+            height: 200px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-top: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--darker);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Investor Section */
+        .investor-section {
+            background: linear-gradient(180deg, var(--darker) 0%, var(--card) 50%, var(--darker) 100%);
+        }
+
+        .investor-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .investor-card {
+            background: var(--darker);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .investor-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .investor-card.gold {
+            border-color: #F59E0B;
+            background: linear-gradient(180deg, rgba(245, 158, 11, 0.1) 0%, var(--darker) 100%);
+        }
+
+        .investor-tier {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .investor-card:nth-child(1) .investor-tier { color: #10B981; }
+        .investor-card:nth-child(2) .investor-tier { color: #3B82F6; }
+        .investor-card:nth-child(3) .investor-tier { color: #F59E0B; }
+
+        .investor-amount {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .investor-range {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .investor-benefits {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .investor-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .investor-benefits li::before {
+            content: '★';
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 4rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .investor-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">NeXus<span>AGI</span></div>
+            <ul class="nav-links">
+                <li><a href="#agencies">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#investors">Investors</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-outline">Get Quote</a>
+                <a href="#investors" class="btn btn-primary">Invest Now</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Now Accepting Investors</div>
+            <h1>Your Complete <span class="gradient">AI Agency</span> Solution</h1>
+            <p>From websites to smart contracts, images to videos, NeXus AGI delivers professional-grade creative and business solutions powered by cutting-edge artificial intelligence.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary btn-large">Request a Quote</a>
+                <a href="#agencies" class="btn btn-outline btn-large">View Services</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">7+</div>
+                    <div class="stat-label">AI Agencies</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">AI Availability</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Custom Work</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agencies Section -->
+    <section id="agencies">
+        <div class="section-header fade-in">
+            <h2>Our AI-Powered Agencies</h2>
+            <p>Each agency specializes in a specific domain, delivering professional results with the speed and precision of artificial intelligence.</p>
+        </div>
+        <div class="agencies-grid">
+            <div class="agency-card fade-in">
+                <div class="agency-icon" style="background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);">💬</div>
+                <h3>Chat & Assistant</h3>
+                <p>Intelligent conversational AI for customer support, personal assistance, and business automation. Context-aware and infinitely patient.</p>
+                <div class="agency-features">
+                    <span class="agency-feature">24/7 Support</span>
+                    <span class="agency-feature">Multi-language</span>
+                    <span class="agency-feature">Custom Training</span>
+                </div>
+            </div>
+            <div class="agency-card fade-in">
+                <div class="agency-icon" style="background: linear-gradient(135deg, #06B6D4 0%, #0EA5E9 100%);">🌐</div>
+                <h3>Website Builder</h3>
+                <p>Full-stack websites from concept to deployment. Landing pages, e-commerce, portfolios, and complex web applications in multiple styles.</p>
+                <div class="agency-features">
+                    <span class="agency-feature">React/Next.js</span>
+                    <span class="agency-feature">Responsive</span>
+                    <span class="agency-feature">SEO Optimized</span>
+                </div>
+            </div>
+            <div class="agency-card fade-in">
+                <div class="agency-icon" style="background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);">🎨</div>
+                <h3>Image Generation</h3>
+                <p>FLUX-powered image creation for marketing materials, product mockups, concept art, and brand assets. Photorealistic or stylized.</p>
+                <div class="agency-features">
+                    <span class="agency-feature">FLUX AI</span>
+                    <span class="agency-feature">High-Res</span>
+                    <span class="agency-feature">Any Style</span>
+                </div>
+            </div>
+            <div class="agency-card fade-in">
+                <div class="agency-icon" style="background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);">🎬</div>
+                <h3>Video Generation</h3>
+                <p>CogVideoX-powered video content for social media, advertisements, explainers, and promotional material. From script to screen.</p>
+                <div class="agency-features">
+                    <span class="agency-feature">CogVideoX</span>
+                    <span class="agency-feature">4K Output</span>
+                    <span class="agency-feature">Motion Graphics</span>
+                </div>
+            </div>
+            <div class="agency-card fade-in">
+                <div class="agency-icon" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">⛓️</div>
+                <h3>Crypto Agency</h3>
+                <p>Smart contracts, NFT collections, DeFi protocols, and token development. Ethereum, Solana, Polygon, and more. Security-audited code.</p>
+                <div class="agency-features">
+                    <span class="agency-feature">Solidity</span>
+                    <span class="agency-feature">Anchor/Rust</span>
+                    <span class="agency-feature">Audited</span>
+                </div>
+            </div>
+            <div class="agency-card fade-in">
+                <div class="agency-icon" style="background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);">📊</div>
+                <h3>Financial Analysis</h3>
+                <p>Crypto market analysis, portfolio optimization, trading signals, and risk assessment. Data-driven insights for informed decisions.</p>
+                <div class="agency-features">
+                    <span class="agency-feature">Real-time Data</span>
+                    <span class="agency-feature">Technical Analysis</span>
+                    <span class="agency-feature">Risk Scoring</span>
+                </div>
+            </div>
+            <div class="agency-card fade-in">
+                <div class="agency-icon" style="background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);">📝</div>
+                <h3>Story & Content</h3>
+                <p>Creative writing, storytelling, blog content, marketing copy, and narrative design. Engaging content that connects with your audience.</p>
+                <div class="agency-features">
+                    <span class="agency-feature">Long-form</span>
+                    <span class="agency-feature">SEO Content</span>
+                    <span class="agency-feature">Brand Voice</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="section-header fade-in">
+            <h2>Transparent Pricing</h2>
+            <p>Choose the service level that fits your needs. All projects include revisions and dedicated support.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card fade-in">
+                <div class="pricing-tier">Starter</div>
+                <h3>Quick Projects</h3>
+                <div class="pricing-price">$500<span>+</span></div>
+                <p class="pricing-desc">Perfect for small businesses and individuals needing single deliverables.</p>
+                <ul class="pricing-features">
+                    <li>Single-page websites</li>
+                    <li>Basic smart contracts (ERC20)</li>
+                    <li>Image packs (10 images)</li>
+                    <li>Short-form content</li>
+                    <li>3 revision rounds</li>
+                    <li>Email support</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Get Started</a>
+            </div>
+            <div class="pricing-card featured fade-in">
+                <div class="pricing-tier">Professional</div>
+                <h3>Full Solutions</h3>
+                <div class="pricing-price">$2,500<span>+</span></div>
+                <p class="pricing-desc">Comprehensive packages for businesses ready to scale with AI.</p>
+                <ul class="pricing-features">
+                    <li>Multi-page web applications</li>
+                    <li>NFT collections (ERC721)</li>
+                    <li>Video content packages</li>
+                    <li>Full brand asset kits</li>
+                    <li>Unlimited revisions</li>
+                    <li>Priority support</li>
+                    <li>Source files included</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Started</a>
+            </div>
+            <div class="pricing-card fade-in">
+                <div class="pricing-tier">Enterprise</div>
+                <h3>Custom Integration</h3>
+                <div class="pricing-price">$10K<span>+</span></div>
+                <p class="pricing-desc">Full-service partnerships with dedicated AI resources and ongoing support.</p>
+                <ul class="pricing-features">
+                    <li>Custom AI agent deployment</li>
+                    <li>Complex DeFi protocols</li>
+                    <li>Ongoing content creation</li>
+                    <li>White-label solutions</li>
+                    <li>Dedicated account manager</li>
+                    <li>SLA guarantees</li>
+                    <li>Training & documentation</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="section-header fade-in">
+            <h2>Proof of Work</h2>
+            <p>Real projects delivered by NeXus AGI. See what we can build for you.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-preview" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">⛓️</div>
+                <div class="portfolio-info">
+                    <h4>MoonChimp NFT Collection</h4>
+                    <p>10,000 NFT collection with Merkle whitelist, royalties, and evolving metadata.</p>
+                    <span class="portfolio-tag">Smart Contract</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-preview" style="background: linear-gradient(135deg, #06B6D4 0%, #0EA5E9 100%);">🌐</div>
+                <div class="portfolio-info">
+                    <h4>DeFi Dashboard</h4>
+                    <p>Real-time portfolio tracker with multi-chain support and analytics.</p>
+                    <span class="portfolio-tag">Web Application</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-preview" style="background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);">🎨</div>
+                <div class="portfolio-info">
+                    <h4>Brand Identity Package</h4>
+                    <p>Complete visual identity including logos, marketing materials, and social assets.</p>
+                    <span class="portfolio-tag">Image Generation</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-preview" style="background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);">🎬</div>
+                <div class="portfolio-info">
+                    <h4>Product Launch Video</h4>
+                    <p>60-second promotional video with motion graphics and voiceover.</p>
+                    <span class="portfolio-tag">Video Content</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-preview" style="background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);">📊</div>
+                <div class="portfolio-info">
+                    <h4>Trading Signal Bot</h4>
+                    <p>Automated crypto analysis with Telegram alerts and risk scoring.</p>
+                    <span class="portfolio-tag">Financial Analysis</span>
+                </div>
+            </div>
+            <div class="portfolio-item fade-in">
+                <div class="portfolio-preview" style="background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);">📝</div>
+                <div class="portfolio-info">
+                    <h4>Whitepaper & Documentation</h4>
+                    <p>30-page technical whitepaper with tokenomics and roadmap.</p>
+                    <span class="portfolio-tag">Content Writing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor Section -->
+    <section id="investors" class="investor-section">
+        <div class="section-header fade-in">
+            <h2>Investment Opportunity</h2>
+            <p>Join us at the ground floor of the AI revolution. Early investors receive exclusive benefits including Legend NFTs for the upcoming MoonChimp! Metaverse.</p>
+        </div>
+        <div class="investor-grid">
+            <div class="investor-card fade-in">
+                <div class="investor-tier">Seed Tier</div>
+                <div class="investor-amount">$5K - $15K</div>
+                <div class="investor-range">Early Supporter</div>
+                <ul class="investor-benefits">
+                    <li>5% equity stake (seed round)</li>
+                    <li>Free Legend NFT (playable character)</li>
+                    <li>Quarterly investor updates</li>
+                    <li>Priority service access</li>
+                    <li>Name in credits</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Learn More</a>
+            </div>
+            <div class="investor-card fade-in">
+                <div class="investor-tier">Growth Tier</div>
+                <div class="investor-amount">$25K - $50K</div>
+                <div class="investor-range">Strategic Partner</div>
+                <ul class="investor-benefits">
+                    <li>10% equity stake</li>
+                    <li>Rare Legend NFT (unique abilities)</li>
+                    <li>Board observer rights</li>
+                    <li>Revenue sharing on services</li>
+                    <li>Co-marketing opportunities</li>
+                    <li>Early metaverse access</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Learn More</a>
+            </div>
+            <div class="investor-card gold fade-in">
+                <div class="investor-tier">Strategic Tier</div>
+                <div class="investor-amount">$100K+</div>
+                <div class="investor-range">Co-Founder Level</div>
+                <ul class="investor-benefits">
+                    <li>20%+ equity stake</li>
+                    <li>Legendary NFT (1 of 10 ever)</li>
+                    <li>Board seat</li>
+                    <li>Full revenue participation</li>
+                    <li>White-label licensing rights</li>
+                    <li>Land grant in MoonChimp! Metaverse</li>
+                    <li>Direct product input</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Schedule Call</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem;">
+            <p>All investors receive evolving Legend NFTs that grow with token purchases and platform engagement.<br>These NFTs are playable characters in the upcoming MoonChimp! Metaverse.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header fade-in">
+            <h2>Start Your Project</h2>
+            <p>Tell us what you need. We'll respond within 24 hours with a custom quote.</p>
+        </div>
+        <div class="contact-container">
+            <form class="contact-form fade-in" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service...</option>
+                            <option value="website">Website Development</option>
+                            <option value="smart-contract">Smart Contract</option>
+                            <option value="nft">NFT Collection</option>
+                            <option value="image">Image Generation</option>
+                            <option value="video">Video Content</option>
+                            <option value="analysis">Financial Analysis</option>
+                            <option value="content">Content Writing</option>
+                            <option value="custom">Custom Project</option>
+                            <option value="investment">Investment Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget Range</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select budget...</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-2500">$1,000 - $2,500</option>
+                            <option value="2500-5000">$2,500 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="10000+">$10,000+</option>
+                            <option value="investment">Investment Discussion</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" required placeholder="Describe your project, goals, and any specific requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large" style="width: 100%; justify-content: center;">Send Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">NeXus<span>AGI</span></div>
+                <p>AI-powered creative and business solutions. Building the future of digital services, one intelligent agent at a time.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#agencies">Website Builder</a></li>
+                    <li><a href="#agencies">Smart Contracts</a></li>
+                    <li><a href="#agencies">Image Generation</a></li>
+                    <li><a href="#agencies">Video Content</a></li>
+                    <li><a href="#agencies">Financial Analysis</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#investors">Investors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Coming Soon</h4>
+                <ul>
+                    <li><a href="#">MoonChimp! Metaverse</a></li>
+                    <li><a href="#">Legend NFTs</a></li>
+                    <li><a href="#">Token Launch</a></li>
+                    <li><a href="#">API Access</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NeXus AGI. All rights reserved.</p>
+            <p>Powered by Artificial Intelligence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            // For demo purposes - in production, you'd set up Formspree or your own backend
+            if (form.action.includes('YOUR_FORM_ID')) {
+                e.preventDefault();
+                alert('Form submitted! In production, connect this to Formspree or your backend.');
+            }
+        });
+    </script>
+</body>
+</html>
